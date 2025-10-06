@@ -1,44 +1,56 @@
 import pandas as pd
 import matplotlib.pyplot as plt
-import os
+import seaborn as sns
+import plotly.express as px
 
-# Load data
-df = pd.read_csv("data/data-table.csv")
+# Load both datasets
+df_all = pd.read_csv("data/data-table.csv")
+df_cancer = pd.read_csv("data/cancer-deaths.csv")
 
-# Clean numeric columns
-df['DEATHS'] = df['DEATHS'].astype(str).str.replace(',', '').astype(float)
-df['RATE'] = df['RATE'].astype(float)
+# ✅ 1️⃣ Average Mortality Rate Comparison (All vs. Cancer)
+avg_all = df_all.groupby("YEAR")["RATE"].mean().reset_index()
+avg_cancer = df_cancer.groupby("YEAR")["RATE"].mean().reset_index()
 
-# Print summary
-print("Data Summary:")
-print(df.describe())
+merged = pd.merge(avg_all, avg_cancer, on="YEAR", suffixes=("_All", "_Cancer"))
 
-# Average mortality rate by year
-avg_rate = df.groupby('YEAR')['RATE'].mean().reset_index()
-
-# Plot average rate trend
-plt.figure(figsize=(8,5))
-plt.plot(avg_rate['YEAR'], avg_rate['RATE'], marker='o')
-plt.title('Average Mortality Rate by Year')
-plt.xlabel('Year')
-plt.ylabel('Average Rate')
+plt.figure(figsize=(10, 6))
+plt.plot(merged["YEAR"], merged["RATE_All"], label="All Causes", marker="o")
+plt.plot(merged["YEAR"], merged["RATE_Cancer"], label="Cancer", marker="o", color="red")
+plt.title("Average Mortality Rate: All Causes vs. Cancer (2014–2023)")
+plt.xlabel("Year")
+plt.ylabel("Average Rate")
+plt.legend()
 plt.grid(True)
-os.makedirs("static", exist_ok=True)
-plt.savefig("static/avg_rate_trend.png")
+plt.tight_layout()
+plt.savefig("static/compare_trend.png")
 plt.close()
 
-# Top 5 states by rate in latest year
-latest_year = df['YEAR'].max()
-top_states = (
-    df[df['YEAR'] == latest_year]
-    .sort_values(by='RATE', ascending=False)
-    .head(5)
+# ✅ 2️⃣ Correlation Heatmap (Latest Year)
+latest_year = df_all["YEAR"].max()
+df_all_latest = df_all[df_all["YEAR"] == latest_year][["STATE", "RATE"]].rename(columns={"RATE": "All_Rate"})
+df_cancer_latest = df_cancer[df_cancer["YEAR"] == latest_year][["STATE", "RATE"]].rename(columns={"RATE": "Cancer_Rate"})
+
+merged_states = pd.merge(df_all_latest, df_cancer_latest, on="STATE")
+corr = merged_states[["All_Rate", "Cancer_Rate"]].corr()
+
+plt.figure(figsize=(6, 5))
+sns.heatmap(corr, annot=True, cmap="coolwarm", fmt=".2f")
+plt.title(f"Correlation between Cancer and All Mortality Rates ({latest_year})")
+plt.tight_layout()
+plt.savefig("static/state_correlation.png")
+plt.close()
+
+# ✅ 3️⃣ Cancer Mortality Choropleth Map
+cancer_latest = df_cancer[df_cancer["YEAR"] == df_cancer["YEAR"].max()]
+fig_cancer = px.choropleth(
+    cancer_latest,
+    locations="STATE",
+    locationmode="USA-states",
+    color="RATE",
+    color_continuous_scale="Reds",
+    scope="usa",
+    title=f"Cancer Mortality Rate by State ({latest_year})"
 )
-plt.figure(figsize=(8,5))
-plt.bar(top_states['STATE'], top_states['RATE'], color='salmon')
-plt.title(f'Top 5 States by Rate in {latest_year}')
-plt.ylabel('Rate')
-plt.savefig("static/top_states.png")
-plt.close()
+fig_cancer.write_html("static/cancer_heatmap.html")
 
-print("✅ Charts saved in static/ folder.")
+print("✅ Analysis complete! Visuals saved in /static/")

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>State Mortality Dashboard</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        h2 {
+            color: #555;
+            margin-top: 40px;
+        }
+        img {
+            border-radius: 10px;
+            margin-top: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body>
+
+    <h1>U.S. State Mortality Dashboard</h1>
+    <p><em>Data Source: National Center for Health Statistics (NCHS)</em></p>
+
+    <h2>Interactive Heatmaps</h2>
+    <iframe src="{{ url_for('static', filename='heatmap.html') }}" width="800" height="500" frameborder="0"></iframe>
+
+    <h2>Average Mortality Rate by Year</h2>
+    <img src="{{ url_for('static', filename='avg_rate_trend.png') }}" width="700">
+
+    <h2>Top 5 States by Rate (Latest Year)</h2>
+    <img src="{{ url_for('static', filename='top_states.png') }}" width="700">
+
+    <h2>Heatmap Correlation Between Cancer and All Mortality</h2>
+    <img src="{{ url_for('static', filename='state_correlation.png') }}" width="500">
+
+    <h2>Trend Comparison: All Causes vs. Cancer</h2>
+    <img src="{{ url_for('static', filename='compare_trend.png') }}" width="700">
+
+</body>
+</html>

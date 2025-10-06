@@ -52,3 +52,17 @@ These states, concentrated in the **Southern and Appalachian regions**, tend to 
 
 **Conclusion:**  
 The dataset reflects a story of **crisis and recovery** — a national health rebound after COVID-19, with regional outliers that highlight ongoing inequality in access to care and preventive health outcomes.
+
+### 📊 Extended Analysis
+
+The project now includes:
+- **Comparative trend visualization** of all-cause and cancer mortality (2014–2023)
+- **Correlation heatmap** showing how closely cancer mortality tracks with total mortality across states
+- **Interactive maps** rendered with Plotly (Flask-based web interface)
+- **Static insights** saved as PNGs in `/static/`
+
+#### Insights:
+- The **average U.S. mortality rate** has shown gradual decline after 2021, following pandemic peaks.
+- **Cancer mortality** remains a smaller yet steady fraction of total mortality.
+- States with higher total mortality (e.g., KY, WV, MS) also show **strong correlation** with cancer mortality rates.
+- The heatmap confirms a **positive correlation (~0.8–0.9)** between total and cancer-specific mortality by state.
