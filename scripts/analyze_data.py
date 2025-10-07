@@ -90,7 +90,7 @@ fig_cancer = px.choropleth(
     color="RATE",
     color_continuous_scale="Reds",
     scope="usa",
-    title=f"Cancer Mortality Rate by State ({latest_year})"
+    title=f"Cancer Mortality Rate by State ({latest_year}) per 100,000"
 )
 fig_cancer.write_html("static/cancer_heatmap.html")
 fig_cancer.write_image("static/cancer_heatmap.png")
@@ -215,9 +215,9 @@ fig_all = px.choropleth(
     color="RATE",
     color_continuous_scale="Blues",
     scope="usa",
-    title=f"All-Cause Mortality Rate by State ({latest_year})"
+    title=f"All-Cause Mortality Rate by State ({latest_year}) per 100,000"
 )
-fig_all.update_layout(coloraxis_colorbar_title="Rate per 100 000 population")
+fig_all.update_layout(coloraxis_colorbar_title="RATE")
 fig_all.write_html("static/heatmap.html")
 fig_all.write_image("static/heatmap.png") 
 
