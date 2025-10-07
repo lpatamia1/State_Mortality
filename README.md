@@ -89,11 +89,11 @@ The project now includes:
 ![Scatter Plot](static/scatter_rate_deaths.png)
 
 ### 7️⃣ All-Cause Mortality Heatmap
-![All-Cause Heatmap](static/heatmap.html)
+![All-Cause Heatmap](static/heatmap.png)
 
 ### 8️⃣ Cancer Mortality Heatmap
-![Cancer Heatmap](static/cancer_heatmap.html)
+![Cancer Heatmap](static/cancer_heatmap.png)
 
 ### 9️⃣ COVID-19 Mortality Heatmap (2021 Peak)
-![COVID Heatmap](static/covid_heatmap.html)
+![COVID Heatmap](static/covid_heatmap.png)
 

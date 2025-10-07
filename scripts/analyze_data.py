@@ -93,6 +93,7 @@ fig_cancer = px.choropleth(
     title=f"Cancer Mortality Rate by State ({latest_year})"
 )
 fig_cancer.write_html("static/cancer_heatmap.html")
+fig_cancer.write_image("static/cancer_heatmap.png")
 
 import us  # pip install us
 
@@ -200,6 +201,8 @@ fig_covid = px.choropleth(
     title=f"COVID-19 Mortality by State (Peak Year: {peak_covid_year})"
 )
 fig_covid.write_html("static/covid_heatmap.html")
+fig_covid.write_image("static/covid_heatmap.png")
+
 
 print("✅ COVID-19 analysis complete! Added COVID visuals to /static/")
 
@@ -216,6 +219,7 @@ fig_all = px.choropleth(
 )
 fig_all.update_layout(coloraxis_colorbar_title="Rate per 100 000 population")
 fig_all.write_html("static/heatmap.html")
+fig_all.write_image("static/heatmap.png") 
 
 # ✅ 5️⃣ Year-over-Year Trend (Top 5 States with Highest Cancer Mortality)
 top5_states = (
