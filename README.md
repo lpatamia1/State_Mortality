@@ -79,21 +79,12 @@ The project now includes:
 ### 3️⃣ Top 5 Cancer Mortality States
 ![Top States](static/top_states.png)
 
-### 4️⃣ Cancer Share of Total Deaths
-![Cancer Share](static/cancer_share.html)
-
-### 5️⃣ Correlation Between All-Cause and Cancer Mortality
-![Correlation Heatmap](static/state_correlation.png)
-
-### 6️⃣ Cancer Rate vs Death Count
-![Scatter Plot](static/scatter_rate_deaths.png)
-
-### 7️⃣ All-Cause Mortality Heatmap
+### 4️⃣ All-Cause Mortality Heatmap
 ![All-Cause Heatmap](static/heatmap.png)
 
-### 8️⃣ Cancer Mortality Heatmap
+### 5️⃣ Cancer Mortality Heatmap
 ![Cancer Heatmap](static/cancer_heatmap.png)
 
-### 9️⃣ COVID-19 Mortality Heatmap (2021 Peak)
+### 6️⃣ COVID-19 Mortality Heatmap (2021 Peak)
 ![COVID Heatmap](static/covid_heatmap.png)
 
