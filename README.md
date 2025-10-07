@@ -66,3 +66,4 @@ The project now includes:
 - **Cancer mortality** remains a smaller yet steady fraction of total mortality.
 - States with higher total mortality (e.g., KY, WV, MS) also show **strong correlation** with cancer mortality rates.
 - The heatmap confirms a **positive correlation (~0.8–0.9)** between total and cancer-specific mortality by state.
+- **COVID-19 (2021 peak)** added significant short-term spikes but did not change long-term chronic mortality patterns.
