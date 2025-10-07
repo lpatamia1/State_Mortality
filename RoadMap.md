@@ -1,4 +1,5 @@
 ## 🗺️ Project Roadmap
+📊 **Data Setup** ➜ 🗺️ **Visualization** ➜ 🔍 **Insights** ➜ 🎛️ **Dashboard** ➜ ⚙️ **Automation** ➜ 🌱 **Future Expansion**
 
 ### ✅ Phase 1: Data Preparation
 - [x] Collect raw mortality datasets from **NCHS / CDC**:
@@ -80,13 +81,4 @@ Create a **comprehensive U.S. Health Trends Dashboard** that:
 - Enables **interactive exploration** by state, year, and demographic
 - Highlights **regional inequalities** and informs **public health policy**
 
-```text
-PHASE 1  ───────────────  ✅ Data Foundations
-│  • Integrated NCHS and CDC mortality datasets  
-│  • Cleaned, normalized, and visualized state-level data  
-│  • Built Flask web interface for interactive viewing  
 
-PHASE 2  ───────────────  ✅ Expanded Visualization
-│  • Added cancer-specific heatmaps  
-│  • Compared all-cause vs. cancer mortality  
-│  • Integrated COVID-19 data and 2021 peak heatmap 
