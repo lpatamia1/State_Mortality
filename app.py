@@ -101,7 +101,7 @@ def index():
 
     <h2>📊 Distribution of Mortality Rates (All vs. Cancer vs. COVID-19 – 2023 Comparison)</h2>
     <p style="text-align:center; font-size:13px; color:#555;">
-        Comparison of 2023 mortality data; COVID-19 distribution reflects post-peak trends, while the map (above) shows the 2021 pandemic peak.
+        Comparison of 2023 mortality data; COVID-19 distribution reflects post-peak trends, while the map (below) shows the 2021 pandemic peak.
     </p>
     <img src="/static/distribution_comparison.png" width="700">
 

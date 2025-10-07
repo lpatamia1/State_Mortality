@@ -12,7 +12,7 @@ os.makedirs("output", exist_ok=True)
 df_all = pd.read_csv("data/data-table.csv")
 df_cancer = pd.read_csv("data/cancer-deaths.csv")
 
-# ✅ Clean numeric columns
+# ✅ Clean and normalize numeric columns
 for df in [df_all, df_cancer]:
     df["DEATHS"] = (
         df["DEATHS"]
@@ -22,6 +22,31 @@ for df in [df_all, df_cancer]:
     )
     df["DEATHS"] = pd.to_numeric(df["DEATHS"], errors="coerce")
     df["RATE"] = pd.to_numeric(df["RATE"], errors="coerce")
+
+# ✅ Scale all-cause mortality rates to per 100,000 if needed
+mean_all = df_all["RATE"].mean(skipna=True)
+if mean_all < 100:  # e.g. if average ~8–18
+    print(f"⚙️ Scaling all-cause rates ×100 (mean before: {mean_all:.1f})")
+    df_all["RATE"] *= 100
+
+print(f"✅ Mean All-Cause RATE after scale: {df_all['RATE'].mean():.1f}")
+print(f"✅ Mean Cancer RATE: {df_cancer['RATE'].mean():.1f}")
+
+# ✅ Quick visual check (optional)
+plt.figure(figsize=(8,5))
+plt.hist(df_all["RATE"], bins=30, alpha=0.6, label="All Causes")
+plt.hist(df_cancer["RATE"], bins=30, alpha=0.6, label="Cancer", color="red")
+plt.legend()
+plt.title("Distribution of Recorded Mortality Rates")
+plt.xlabel("Mortality Rate (per 100,000)")
+plt.ylabel("Number of States")
+plt.show()
+
+print("=== DEBUG SAMPLE VALUES ===")
+print(df_all[["STATE", "YEAR", "RATE"]].head(10))
+print("Mean all-cause rate:", df_all["RATE"].mean())
+print(df_cancer[["STATE", "YEAR", "RATE"]].head(10))
+print("Mean cancer rate:", df_cancer["RATE"].mean())
 
 # ✅ 1️⃣ Average Mortality Rate Comparison (All vs. Cancer)
 avg_all = df_all.groupby("YEAR")["RATE"].mean().reset_index()
@@ -112,6 +137,24 @@ df_covid = df_covid[df_covid["STATE"].notna()]
 
 # Aggregate total yearly deaths per state
 df_covid_yearly = df_covid.groupby(["YEAR", "STATE"])["DEATHS"].sum().reset_index()
+# ✅ Load approximate 2021 state populations (in thousands)
+state_pop = {
+    "CA": 39538, "TX": 29145, "FL": 21538, "NY": 20201, "PA": 12803, "IL": 12588,
+    "OH": 11799, "GA": 10736, "NC": 10488, "MI": 10077, "NJ": 9289, "VA": 8631,
+    "WA": 7705, "AZ": 7151, "MA": 7029, "TN": 6911, "IN": 6786, "MO": 6163,
+    "MD": 6177, "WI": 5894, "CO": 5774, "MN": 5706, "SC": 5210, "AL": 5030,
+    "LA": 4658, "KY": 4512, "OR": 4246, "OK": 3973, "CT": 3606, "UT": 3340,
+    "IA": 3190, "NV": 3139, "AR": 3021, "MS": 2961, "KS": 2938, "NM": 2127,
+    "NE": 1961, "WV": 1794, "ID": 1839, "HI": 1460, "NH": 1389, "ME": 1360,
+    "MT": 1084, "RI": 1096, "DE": 991, "SD": 887, "ND": 779, "AK": 732, "DC": 714,
+    "VT": 645, "WY": 578
+}
+
+# ✅ Convert COVID deaths to per 100,000 population
+df_covid_yearly["RATE"] = df_covid_yearly.apply(
+    lambda x: (x["DEATHS"] / (state_pop.get(x["STATE"], 1000) * 1000)) * 100000,
+    axis=1
+)
 
 print("Unique states:", df_covid["STATE"].unique())
 print("Rows per year:", df_covid_yearly.groupby("YEAR")["STATE"].nunique())
@@ -133,7 +176,7 @@ plt.plot(merged_covid["YEAR"], merged_covid["RATE_Cancer"], label="Cancer", mark
 plt.plot(merged_covid["YEAR"], merged_covid["RATE_Covid"], label="COVID-19", marker="o", color="purple")
 plt.title("Average Mortality Rate: All Causes, Cancer, and COVID-19 (2014–2023)")
 plt.xlabel("Year")
-plt.ylabel("Average Deaths (mean per state)")
+plt.ylabel("Mortality rate (per 100 000 population)")
 plt.legend()
 plt.grid(True)
 plt.tight_layout()
@@ -171,6 +214,7 @@ fig_all = px.choropleth(
     scope="usa",
     title=f"All-Cause Mortality Rate by State ({latest_year})"
 )
+fig_all.update_layout(coloraxis_colorbar_title="Rate per 100 000 population")
 fig_all.write_html("static/heatmap.html")
 
 # ✅ 5️⃣ Year-over-Year Trend (Top 5 States with Highest Cancer Mortality)
@@ -195,20 +239,18 @@ plt.tight_layout()
 plt.savefig("static/top_states.png")
 plt.close()
 
-# ✅ 6️⃣ Distribution Comparison (All vs. Cancer vs. COVID 2023)
+# ✅ 6️⃣ Mortality Distribution Comparison (All vs. Cancer vs. COVID)
 plt.figure(figsize=(10, 6))
+sns.kdeplot(df_all[df_all["YEAR"] == latest_year]["RATE"], label="All Causes", fill=True)
+sns.kdeplot(df_cancer[df_cancer["YEAR"] == latest_year]["RATE"], label="Cancer", fill=True, color="red")
 
-# Plot 2023 all-cause and cancer mortality
-sns.kdeplot(df_all[df_all["YEAR"] == 2023]["RATE"], label="All Causes (2023)", fill=True)
-sns.kdeplot(df_cancer[df_cancer["YEAR"] == 2023]["RATE"], label="Cancer (2023)", fill=True, color="red")
+# Use 2023 for baseline comparison, but COVID from 2021 (peak)
+covid_compare = df_covid_yearly[df_covid_yearly["YEAR"] == 2021]
+if "RATE" in covid_compare.columns:
+    sns.kdeplot(covid_compare["RATE"], label="COVID-19 (2021 Peak)", fill=True, color="purple")
 
-# COVID 2023 deaths for consistency with year
-covid_2023 = df_covid_yearly[df_covid_yearly["YEAR"] == 2023]
-if not covid_2023.empty:
-    sns.kdeplot(covid_2023["DEATHS"], label="COVID-19 (2023)", fill=True, color="purple")
-
-plt.title("Distribution of Mortality by State — All, Cancer, and COVID-19 (2023)")
-plt.xlabel("Mortality Rate / Deaths per State")
+plt.title(f"Distribution of Mortality Rates (All, Cancer, COVID-19)")
+plt.xlabel("Mortality Rate (per 100,000)")
 plt.ylabel("Density")
 plt.legend()
 plt.tight_layout()
@@ -243,14 +285,30 @@ merged_full = pd.merge(
 merged_full = merged_full.dropna(subset=["DEATHS_All", "DEATHS_Cancer"])
 merged_full["Cancer_Share_%"] = (merged_full["DEATHS_Cancer"] / merged_full["DEATHS_All"]) * 100
 
+# ✅ Add COVID-19 deaths (2023) for comparison
+covid_latest_year = 2023  # use 2023 since that’s your dashboard comparison year
+df_covid_2023 = df_covid_yearly[df_covid_yearly["YEAR"] == covid_latest_year][["STATE", "DEATHS"]].rename(columns={"DEATHS": "DEATHS_Covid"})
+
+# Merge COVID deaths into existing dataframe
+merged_full = pd.merge(merged_full, df_covid_2023, on="STATE", how="left")
+
+# Compute COVID share relative to all deaths
+merged_full["Covid_Share_%"] = (merged_full["DEATHS_Covid"] / merged_full["DEATHS_All"]) * 100
+merged_full = merged_full.fillna(0)
+
 fig_share = px.bar(
     merged_full.sort_values("Cancer_Share_%", ascending=False),
     x="STATE",
-    y="Cancer_Share_%",
-    color="Cancer_Share_%",
-    color_continuous_scale="Viridis",
-    title=f"Cancer Share of Total Deaths by State ({latest_year})",
-    labels={"Cancer_Share_%": "Cancer Share (%)"}
+    y=["Cancer_Share_%", "Covid_Share_%"],  # show both shares
+    barmode="group",
+    title=f"Cancer vs COVID-19 Share of Total Deaths by State ({latest_year})",
+    labels={"value": "Share of Total Deaths (%)", "variable": "Cause"}
+)
+fig_share.update_layout(
+    legend_title_text="Cause of Death",
+    coloraxis_showscale=False,
+    bargap=0.25,
+    plot_bgcolor="white"
 )
 fig_share.write_html("static/cancer_share.html")
 
@@ -264,10 +322,3 @@ summary_stats = {
 pd.DataFrame([summary_stats]).to_csv("output/summary_stats.csv", index=False)
 
 print("✅ Extended analysis complete! All visuals saved in /static/ and summary in /output/")
-
-plt.figure(figsize=(8,5))
-plt.hist(df_all["RATE"], bins=30, alpha=0.6, label="All Causes")
-plt.hist(df_cancer["RATE"], bins=30, alpha=0.6, label="Cancer", color="red")
-plt.legend()
-plt.title("Distribution of Recorded Mortality Rates")
-plt.show()
