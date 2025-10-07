@@ -54,11 +54,24 @@
 - [ ] Integrate additional health metrics:
   - Chronic diseases (heart disease, diabetes)
   - Lung disease and smoking/vaping correlations
+  - Mental health and substance-related deaths (opioids, alcohol)
+  - Environmental and behavioral factors (air quality, obesity, inactivity)
 - [ ] Add **year slider** for dynamic choropleth updates
 - [ ] Build **API endpoints** for state-level queries
+  → `/api/state/<state>` and `/api/year/<year>` returning JSON summaries
 - [ ] Deploy a **live analytics dashboard** (Plotly Dash or Streamlit)
-- [ ] Automate data updates from CDC/NCHS API
-
+- [ ] Automate data updates from CDC/NCHS API and GitHub Actions
+- [ ] Include demographic filters for health equity analysis
+- [ ] Create downloadable reports summarizing key findings
+- [ ] Incorporate real-time public health alerts or news feed integration
+- [ ] Optimize visual design:
+  - Accessible color palettes (color-blind friendly)
+  - Hover tooltips with contextual insights
+  - Regional clustering to highlight health inequities
+- [ ] Add comparison dashboards:
+  - State-to-state comparisons (e.g., IL vs KY)
+  - Cause-to-cause correlations (e.g., Cancer vs Heart Disease)
+- [ ] Host on a production server with analytics tracking and feedback form
 ---
 
 ### 🎯 Long-Term Vision
