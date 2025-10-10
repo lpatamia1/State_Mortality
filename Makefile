@@ -35,3 +35,8 @@ clean:
 	find . -type d -name "__pycache__" -exec rm -rf {} +
 	find . -type f -name "*.pyc" -delete
 	@echo "✅ Cleanup complete."
+
+test:
+	@echo "🧪 Running unit tests with coverage..."
+	coverage run -m pytest
+	coverage report -m

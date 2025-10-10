@@ -3,6 +3,10 @@
 # 🩺 State Mortality Dashboard (2020–2023)
 
 <p>
+  <!-- Coverage badge (always first!) -->
+  <img src="https://img.shields.io/badge/coverage-91%25-ffb6c1?style=for-the-badge" alt="Coverage Badge">
+
+  <!-- Tech stack badges -->
   <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python Badge">
   <img src="https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white" alt="Flask Badge">
   <img src="https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white" alt="Pandas Badge">
