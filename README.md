@@ -11,15 +11,17 @@
 
 <em>Visualizing U.S. mortality trends (2020–2023) using real CDC data.</em>
 
+This small project visualizes U.S. state-level mortality data using Python, Pandas, and Flask. It loads real NCHS data, creates simple charts, and serves them in a minimal web app.
+
 </div>
 
 <p align="center">── ✿ ──</p>
 
-This small project visualizes U.S. state-level mortality data using Python, Pandas, and Flask. It loads real NCHS data, creates simple charts, and serves them in a minimal web app.
-
-<p align="center">── ✿ ──</p>
+<div align="center">
 
 ## 🚀 How to Run in Codespaces
+
+</div>
 
 1. Clone this repo or upload your files.
 2. Open a terminal and install dependencies:
@@ -34,7 +36,12 @@ This small project visualizes U.S. state-level mortality data using Python, Pand
    
 <p align="center">── ✿ ──</p>
 
-### 📊 Extended Summary
+<div align="center">
+
+## 📊 Extended Summary
+
+</div>
+
 - This project expands on the initial mortality dashboard by integrating multi-year and multi-cause analyses.  
 - The data reveal a steady national recovery after the pandemic, persistent regional disparities, and a strong correlation between total and cancer-specific mortality.
   
@@ -48,7 +55,10 @@ The following visuals summarize key patterns in mortality trends, causes, and re
   </svg>
 </p>
 
+<div align="center">
+
 ## Data Insights Summary & Visuals from Analysis
+</div>
 
 ### 1️⃣ Average Mortality Rate (All Causes, Cancer, COVID-19)
 <p align="center">
