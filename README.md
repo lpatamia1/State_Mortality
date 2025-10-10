@@ -8,15 +8,15 @@
 
 
 ```text
-          coverage report -m
-             Name                                  Stmts   Miss   Cover  Missing
-          --------------------------------------------------------------------
-          app.py                                  1      0     100%     -
-          tests/test_analysis.py                 13      0     100%     -
-          tests/test_app.py                       6      0     100%     -
-          tests/test_app_routes.py                6      0     100%     -
-          --------------------------------------------------------------------
-          TOTAL                            26      0     100%
+                    coverage report -m
+                       Name                                  Stmts   Miss   Cover  Missing
+                    --------------------------------------------------------------------
+                    app.py                                  1      0     100%     -
+                    tests/test_analysis.py                 13      0     100%     -
+                    tests/test_app.py                       6      0     100%     -
+                    tests/test_app_routes.py                6      0     100%     -
+                    --------------------------------------------------------------------
+                    TOTAL                            26      0     100%
 
 ```
 
