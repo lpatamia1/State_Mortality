@@ -16,6 +16,9 @@ This small project visualizes U.S. state-level mortality data using Python, Pand
    python app.py
    
 ---
+<p align="center">
+  <img src="static/cancer_heatmap.png" width="400" alt="Cancer Mortality Heatmap">
+</p>
 
 ## 📈 Data Insights Summary
 
