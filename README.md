@@ -6,6 +6,7 @@
   <!-- Coverage badge (always first!) -->
   <img src="https://img.shields.io/badge/coverage-100%25-4caf50?style=for-the-badge&labelColor=555555" alt="Coverage Badge">
 
+<div align="center">
 
 ```text
                     coverage report -m
@@ -19,6 +20,7 @@
                     TOTAL                            26      0     100%
 
 ```
+</div>
 
 
   <!-- Tech stack badges -->
