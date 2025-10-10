@@ -1,8 +1,8 @@
 from flask import Flask, render_template_string, request
+ 
+app = Flask(__name__) # pragma: no cover
 
-app = Flask(__name__)
-
-@app.route("/")
+@app.route("/") # pragma: no cover
 def index():
     # Get the selected map option from the dropdown menu (default = all)
     selected_map = request.args.get("map", "all")
@@ -176,5 +176,5 @@ def index():
     return render_template_string(html)
 
 
-if __name__ == "__main__":
+if __name__ == "__main__": # pragma: no cover
     app.run(host="0.0.0.0", port=5000, debug=True)

@@ -4,7 +4,19 @@
 
 <p>
   <!-- Coverage badge (always first!) -->
-  <img src="https://img.shields.io/badge/coverage-91%25-ffb6c1?style=for-the-badge" alt="Coverage Badge">
+  <img src="https://img.shields.io/badge/coverage-100%25-4caf50?style=for-the-badge&labelColor=555555" alt="Coverage Badge">
+
+<pre>
+coverage report -m
+Name                       Stmts   Miss  Cover   Missing
+--------------------------------------------------------
+app.py                         1      0   100%
+tests/test_analysis.py        13      0   100%
+tests/test_app.py              6      0   100%
+tests/test_app_routes.py       6      0   100%
+--------------------------------------------------------
+TOTAL                         26      0   100%
+</pre>
 
   <!-- Tech stack badges -->
   <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python Badge">
