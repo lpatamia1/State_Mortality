@@ -3,11 +3,25 @@
 # 🩺 State Mortality Dashboard (2020–2023)
 
 <p>
-  <!-- Coverage badge (always first!) -->
+    <!-- Tech stack badges -->
+  <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python Badge">
+  <img src="https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white" alt="Flask Badge">
+  <img src="https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white" alt="Pandas Badge">
+  <img src="https://img.shields.io/badge/Plotly-3F4F75?style=for-the-badge&logo=plotly&logoColor=white" alt="Plotly Badge">
   <img src="https://img.shields.io/badge/coverage-100%25-4caf50?style=for-the-badge&labelColor=555555" alt="Coverage Badge">
 
-<div align="center">
+<em>Visualizing U.S. mortality trends (2020–2023) using real CDC data.</em>
 
+This small project visualizes U.S. state-level mortality data using Python, Pandas, and Flask. It loads real NCHS data, creates simple charts, and serves them in a minimal web app.
+
+</div>
+
+<p align="center">────────── ✿ ──────────</p
+
+<div align="center">
+  
+## Coverage Report
+  
 ```text
                     coverage report -m
                        Name                                  Stmts   Miss   Cover  Missing
@@ -22,21 +36,7 @@
 ```
 </div>
 
-
-  <!-- Tech stack badges -->
-  <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python Badge">
-  <img src="https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white" alt="Flask Badge">
-  <img src="https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white" alt="Pandas Badge">
-  <img src="https://img.shields.io/badge/Plotly-3F4F75?style=for-the-badge&logo=plotly&logoColor=white" alt="Plotly Badge">
-</p>
-
-<em>Visualizing U.S. mortality trends (2020–2023) using real CDC data.</em>
-
-This small project visualizes U.S. state-level mortality data using Python, Pandas, and Flask. It loads real NCHS data, creates simple charts, and serves them in a minimal web app.
-
-</div>
-
-<p align="center">── ✿ ──</p>
+<p align="center">────────── ✿ ──────────</p
 
 <div align="center">
 
@@ -55,7 +55,7 @@ This small project visualizes U.S. state-level mortality data using Python, Pand
    ```bash
    python app.py
    
-<p align="center">── ✿ ──</p>
+<p align="center">────────── ✿ ──────────</p
 
 <div align="center">
 
@@ -68,7 +68,7 @@ This small project visualizes U.S. state-level mortality data using Python, Pand
   
 The following visuals summarize key patterns in mortality trends, causes, and regional disparities across the U.S. between 2014 and 2023.
 
-<p align="center">── ✿ ──</p>
+<p align="center">────────── ✿ ──────────</p
 
 <p align="center">
   <svg width="70%" height="2">
@@ -93,12 +93,16 @@ The line chart shows a **sharp decline** in the average mortality rate from 2021
 - **2021–2023:** Rates dropped steeply, suggesting recovery and stabilization as the pandemic waned.  
 
 **Key takeaway:** The data shows a clear **post-pandemic improvement** in mortality rates across the U.S.
+
+<div align="center">
+
 | Year | Trend | Explanation |
 |------|--------|-------------|
 | 2020 | High | Early pandemic impact |
 | 2021 | Peak | Height of pandemic mortality |
 | 2022 | Decline | Vaccination and recovery phase |
 | 2023 | Stabilized | Return to near pre-pandemic rates |
+</div>
 
 **Conclusion:**  
 The dataset reflects a story of **crisis and recovery** — a national health rebound after COVID-19, with regional outliers that highlight ongoing inequality in access to care and preventive health outcomes.
@@ -166,7 +170,7 @@ The heatmap clearly shows the 2021 peak of pandemic-related deaths, concentrated
 
 **Key takeaway:** The map visualizes the pandemic’s sharp but temporary impact — a surge that tested healthcare systems but ultimately subsided faster than long-term chronic disease patterns.
 
----
+<p align="center">────────── ✿ ──────────</p>
 
 ## 🧠 Key Insights & Takeaways
 
@@ -175,9 +179,13 @@ The heatmap clearly shows the 2021 peak of pandemic-related deaths, concentrated
 - **Regional disparities**—especially in the South and Appalachian regions—highlight persistent inequities in healthcare access and outcomes.  
 - This project demonstrates how **data visualization can transform public health data into clear, empathy-driven insights**, connecting complex health trends to real-world impact.
 
----
-
-<p align="center">
+<p align="center">────────── ✿ ──────────</p
+                                           
+<div align="center">
   <em>Data Source: National Center for Health Statistics (NCHS), CDC.  
-  Analysis and visualization by Lily Patamia.</em>
-</p>
+    
+  Built with 🩺 data, empathy, and precision.  
+<sub>Crafted by Lily Patamia — transforming public health data into visual insight for a healthier, more equitable world 🌸</sub>
+</em>
+</div>
+
