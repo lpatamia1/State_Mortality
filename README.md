@@ -1,11 +1,23 @@
-# 🩺 State Mortality Dashboard (2020–2023)
-![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
-![Flask](https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white)
-![Pandas](https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white)
-![Plotly](https://img.shields.io/badge/Plotly-3F4F75?style=for-the-badge&logo=plotly&logoColor=white)
+<div align="center">
 
+# 🩺 State Mortality Dashboard (2020–2023)
+
+<p>
+  <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python Badge">
+  <img src="https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white" alt="Flask Badge">
+  <img src="https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white" alt="Pandas Badge">
+  <img src="https://img.shields.io/badge/Plotly-3F4F75?style=for-the-badge&logo=plotly&logoColor=white" alt="Plotly Badge">
+</p>
+
+<em>Visualizing U.S. mortality trends (2020–2023) using real CDC data.</em>
+
+</div>
+
+<p align="center">── ✿ ──</p>
 
 This small project visualizes U.S. state-level mortality data using Python, Pandas, and Flask. It loads real NCHS data, creates simple charts, and serves them in a minimal web app.
+
+<p align="center">── ✿ ──</p>
 
 ## 🚀 How to Run in Codespaces
 
@@ -20,7 +32,7 @@ This small project visualizes U.S. state-level mortality data using Python, Pand
    ```bash
    python app.py
    
----
+<p align="center">── ✿ ──</p>
 
 ### 📊 Extended Summary
 - This project expands on the initial mortality dashboard by integrating multi-year and multi-cause analyses.  
@@ -28,7 +40,13 @@ This small project visualizes U.S. state-level mortality data using Python, Pand
   
 The following visuals summarize key patterns in mortality trends, causes, and regional disparities across the U.S. between 2014 and 2023.
 
----
+<p align="center">── ✿ ──</p>
+
+<p align="center">
+  <svg width="70%" height="2">
+    <line x1="0" y1="1" x2="100%" y2="1" stroke="#ffb6c1" stroke-width="2" />
+  </svg>
+</p>
 
 ## Data Insights Summary & Visuals from Analysis
 
@@ -112,7 +130,23 @@ Cancer-related deaths remain **geographically consistent** across the dataset’
 <p align="center"> <img src="https://raw.githubusercontent.com/lpatamia1/State_Mortality/main/static/covid_heatmap.png" width="600" alt="COVID-19 Heatmap"> <br> <em>Figure 6. COVID-19 mortality heatmap illustrating 2021 pandemic hotspots concentrated across the South and Southwest.</em> </p>
   
 The heatmap clearly shows the 2021 peak of pandemic-related deaths, concentrated in states such as **Florida, Texas, and Louisiana**.  
-Areas with **low vaccination coverage and delayed mitigation policies** experienced disproportionately high mortality.  
-By late 2022, these rates dropped substantially as immunity increased through vaccination and prior infection.
+- Areas with **low vaccination coverage and delayed mitigation policies** experienced disproportionately high mortality.  
+- By late 2022, these rates dropped substantially as immunity increased through vaccination and prior infection.
 
 **Key takeaway:** The map visualizes the pandemic’s sharp but temporary impact — a surge that tested healthcare systems but ultimately subsided faster than long-term chronic disease patterns.
+
+---
+
+## 🧠 Key Insights & Takeaways
+
+- U.S. mortality **peaked in 2021** during the COVID-19 pandemic but **declined sharply by 2023**, signaling a strong national recovery.  
+- **Chronic diseases** such as cancer remain stable, long-term contributors to mortality, emphasizing the need for ongoing prevention efforts.  
+- **Regional disparities**—especially in the South and Appalachian regions—highlight persistent inequities in healthcare access and outcomes.  
+- This project demonstrates how **data visualization can transform public health data into clear, empathy-driven insights**, connecting complex health trends to real-world impact.
+
+---
+
+<p align="center">
+  <em>Data Source: National Center for Health Statistics (NCHS), CDC.  
+  Analysis and visualization by Lily Patamia.</em>
+</p>
